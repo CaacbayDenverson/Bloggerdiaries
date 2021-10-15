@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-toolbar">
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-label class="logo1">Blogger</ion-label>
+    <br>
+    <ion-label class="logo2">Diaries</ion-label>
+  </div>
+
+  <div class="inputs">
+    <ion-label class="inputName">Username</ion-label>
+    <ion-input clearInput value=""></ion-input>
+    <ion-label class="inputName">Password</ion-label>
+    <ion-input clearInput value=""></ion-input>
+    <ion-button (click)="RedirectToOtherPage()" color="success" class="btn">Login</ion-button>
+    <ion-button (click)="RedirectToOtherPage1()" color="success" class="btn">Sign Up</ion-button>
+  </div>
+  <div class="footer1">
+    <ion-label>Forgot Password? <a href="#">Click Me</a> </ion-label>
+  </div>
+</ion-content>
