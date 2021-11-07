@@ -8,36 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-item  lines="none">
-      <ion-avatar slot="start">
-        <img src="assets/person.png">
-      </ion-avatar>
-      <ion-label>Account Name</ion-label>
-    </ion-item>
-  </ion-card>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col class="tab1">
-        Following
-      </ion-col>
-      <ion-col class="tab2">
-        Followers
-      </ion-col>
-      <ion-col class="tab3">
-        Post
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-card class="sm">
-    <ion-card-content>
-      <ion-label style="font-size: 20px;">Social Media</ion-label><br>
-      <ion-label>Facebook</ion-label><br>
-      <ion-label>Twitter</ion-label><br>
-      <ion-label>Instagram</ion-label><br>
-      <ion-label>Tiktok</ion-label><br>
-    </ion-card-content>
-  </ion-card>
+  <form [formGroup]="profileform" class="inputs">
+    <ion-label class="inputName">First Name</ion-label>
+    <ion-input disabled="true" formControlName="firstname"  value=""></ion-input>
+    <ion-label class="inputName">Last Name</ion-label>
+    <ion-input disabled="true" formControlName="lastname"  value=""></ion-input>
+    <ion-label class="inputName">Username</ion-label>
+    <ion-input disabled="true" formControlName="username"  value=""></ion-input>
+    <ion-label class="inputName">Email</ion-label>
+    <ion-input disabled="true" formControlName="email"  value=""></ion-input>
+    <ion-label class="inputName">Password</ion-label>
+    <ion-input disabled="true" formControlName="password"  value=""></ion-input>
+    <ion-label class="inputName">Confirm Password</ion-label>
+    <ion-input disabled="true" formControlName="confirmpassword"  value=""></ion-input>
+    <ion-label class="inputName">Facebook</ion-label>
+    <ion-input disabled="true" formControlName="facebook"  value=""></ion-input>
+    <ion-label class="inputName">Twitter</ion-label>
+    <ion-input disabled="true" formControlName="twitter"  value=""></ion-input>
+    <ion-label class="inputName">Instagram</ion-label>
+    <ion-input disabled="true" formControlName="instagram"  value=""></ion-input>
+    <ion-label class="inputName">Tiktok</ion-label>
+    <ion-input disabled="true" formControlName="tiktok"  value=""></ion-input>
+    <ion-button (click)="updateform()" color="success" class="btn">Show My Profile</ion-button>
+  </form>
+  
 </ion-content>

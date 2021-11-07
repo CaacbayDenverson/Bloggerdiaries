@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +10,25 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(public router:Router) {
+  username = '';
+  password = new FormControl('');
+
+
+  constructor(public router:Router, public toastController:ToastController) {
 
   }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Login Successfully.',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
   RedirectToOtherPage()
   {
+    console.log(this.username);
+    console.log(this.password.value)
     this.router.navigateByUrl('/dashboard');
   }
   RedirectToOtherPage1()

@@ -16,20 +16,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="inputs">
+  <form [formGroup]="profileform" class="inputs">
     <ion-label class="inputName">First Name</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input formControlName="firstname" clearInput value=""></ion-input>
     <ion-label class="inputName">Last Name</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input formControlName="lastname" clearInput value=""></ion-input>
     <ion-label class="inputName">Username</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input formControlName="username" clearInput value=""></ion-input>
     <ion-label class="inputName">Email</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input formControlName="email" clearInput value=""></ion-input>
     <ion-label class="inputName">Password</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input formControlName="password" clearInput value=""></ion-input>
     <ion-label class="inputName">Confirm Password</ion-label>
-    <ion-input clearInput value=""></ion-input>
-    <ion-button (click)="RedirectToOtherPage()" color="success" class="btn">Sign Up</ion-button>
-  </div>
-
+    <ion-input formControlName="confirmpassword" clearInput value=""></ion-input>
+    <ion-button (click)="RedirectToOtherPage()" (click)="presentToast()" color="success" class="btn">Sign Up</ion-button>
+    <ion-button (click)="updateform()" color="success" class="btn">Update Form</ion-button>
+  </form>
 </ion-content>

@@ -21,9 +21,9 @@
 
   <div class="inputs">
     <ion-label class="inputName">Username</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input [(ngModel)]="username" clearInput value=""></ion-input>
     <ion-label class="inputName">Password</ion-label>
-    <ion-input clearInput value=""></ion-input>
+    <ion-input [formControl]="password" clearInput value=""></ion-input>
     <ion-button (click)="RedirectToOtherPage()" color="success" class="btn">Login</ion-button>
     <ion-button (click)="RedirectToOtherPage1()" color="success" class="btn">Sign Up</ion-button>
   </div>
