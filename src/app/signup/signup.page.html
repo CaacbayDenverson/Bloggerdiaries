@@ -16,20 +16,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="profileform" class="inputs">
-    <ion-label class="inputName">First Name</ion-label>
-    <ion-input formControlName="firstname" clearInput value=""></ion-input>
-    <ion-label class="inputName">Last Name</ion-label>
-    <ion-input formControlName="lastname" clearInput value=""></ion-input>
-    <ion-label class="inputName">Username</ion-label>
-    <ion-input formControlName="username" clearInput value=""></ion-input>
+  <form [formGroup]="signupform" class="inputs">
+    <ion-label class="inputName">Full Name</ion-label>
+    <ion-input formControlName="fullname" clearInput value=""></ion-input>
     <ion-label class="inputName">Email</ion-label>
     <ion-input formControlName="email" clearInput value=""></ion-input>
+    <ion-label class="inputName">Contact Number</ion-label>
+    <ion-input formControlName="contact" clearInput value=""></ion-input>
     <ion-label class="inputName">Password</ion-label>
     <ion-input formControlName="password" clearInput value=""></ion-input>
-    <ion-label class="inputName">Confirm Password</ion-label>
-    <ion-input formControlName="confirmpassword" clearInput value=""></ion-input>
-    <ion-button (click)="RedirectToOtherPage()" (click)="presentToast()" color="success" class="btn">Sign Up</ion-button>
-    <ion-button (click)="updateform()" color="success" class="btn">Update Form</ion-button>
+    <ion-button (click)="signup()" (click)="presentToast()" color="success" class="btn">Sign Up</ion-button>
+   
   </form>
 </ion-content>

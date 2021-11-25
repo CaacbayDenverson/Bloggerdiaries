@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -8,16 +9,45 @@ import { ToastController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
 
-  username = '';
-  password = new FormControl('');
+export class HomePage implements OnInit {
+  loginForm:FormGroup
+//  username = '';
+//  password = new FormControl('');
+//  username = '';
+//  password = new FormControl('');
+//  user: any;
 
+  constructor(public router:Router, private FB:FormBuilder, private loginservice:LoginService, public toastController:ToastController) {}
 
-  constructor(public router:Router, public toastController:ToastController) {
+  ngOnInit() {
+    this.loginForm=this.FB.group({
+      email:['',Validators.required],
+      password:['',Validators.required],
 
+    })
   }
-  async presentToast() {
+
+  login(){
+    console.log(this.loginForm.value)
+    if(this.loginForm.valid){
+      this.loginservice.loginRequest(this.loginForm.value).subscribe((rest:any)=>{
+        console.log(rest)
+        if(rest.data){
+          this.router.navigate(['/dashboard'])
+          localStorage.setItem('user',JSON.stringify(rest.data))
+        }
+        else if(rest.error){
+          console.log(rest.error)
+
+        }
+      })
+    }
+  }
+
+
+
+  async presentToast(message) {
     const toast = await this.toastController.create({
       message: 'Login Successfully.',
       duration: 2000,
@@ -25,12 +55,6 @@ export class HomePage {
     toast.present();
   }
 
-  RedirectToOtherPage()
-  {
-    console.log(this.username);
-    console.log(this.password.value)
-    this.router.navigateByUrl('/dashboard');
-  }
   RedirectToOtherPage1()
   {
     this.router.navigateByUrl('/signup');

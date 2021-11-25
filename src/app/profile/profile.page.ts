@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { HomeService } from '../services/home.service';
+
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,39 +11,42 @@ import { FormGroup,FormControl } from '@angular/forms';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  profileform = new FormGroup({
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      username : new FormControl(''),
-      email : new FormControl(''),
-      password : new FormControl(''),
-      confirmpassword : new FormControl(''),
-      facebook : new FormControl(''),
-      twitter : new FormControl(''),
-      instagram : new FormControl(''),
-      tiktok : new FormControl('')
-      
-    })
-
-
-  constructor() { }
+profileForm:FormGroup
+data: any=[];
+  constructor(public router:Router, private fb : FormBuilder, private homeService : HomeService) { }
   
-  updateform()
-  {
-    this.profileform.patchValue({
-      firstname: 'Denverson',
-      lastname: 'Caacbay',
-      username: 'denver.kun',
-      email: 'denversoncaacbay@gmail.com',
-      password : '123',
-      confirmpassword :'123',
-      facebook : 'https://www.facebook.com/denver.kun.7',
-      twitter : 'https://twitter.com/denver_kun9',
-      instagram : 'https://www.instagram.com/denver.kun29/',
-      tiktok : 'I CANT'
+  ngOnInit() {
+    this.getLocalStorage();
+    this.profileForm=this.fb.group({
+      id:[this.data.id],
+      fullname:[this.data.fullname],
+      email:[this.data.email],
+      contact:[this.data.contact],
+      password:[this.data.password]
+
+    })
+  }
+
+  update(){
+    this.homeService.updateRequest(this.profileForm.value).subscribe((res:any)=>{
+      if(res.data){
+        this.router.navigate(['/profile'])
+        localStorage.setItem('user', JSON.stringify(res.data));
+      }
+      else if(res.data){
+        console.log(res.data);
+      }
     });
   }
-  ngOnInit() {
+
+  getLocalStorage(){
+  this.data = JSON.parse(localStorage.getItem("user"));
+    console.log(this.data);
+  }
+  
+  goToEdit()
+  {
+    this.router.navigateByUrl('/edit');
   }
 
 }

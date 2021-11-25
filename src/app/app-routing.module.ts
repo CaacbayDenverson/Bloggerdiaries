@@ -31,6 +31,7 @@ const routes: Routes = [
     path: 'aboutpage',
     loadChildren: () => import('./aboutpage/aboutpage.module').then( m => m.AboutpagePageModule)
   },
+
 ];
 
 @NgModule({
